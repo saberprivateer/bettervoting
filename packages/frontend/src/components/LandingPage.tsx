@@ -58,7 +58,7 @@ const LandingPage = () => {
     const flags = useFeatureFlags();
 
     const boxRef = useRef(null);
-    const featuredElectionIds = process.env.REACT_APP_FEATURED_ELECTIONS.split(',').filter(Boolean);
+    const featuredElectionIds = (process.env.REACT_APP_FEATURED_ELECTIONS || '').split(',').filter(Boolean);
     const {t} = useSubstitutedTranslation('election');
 
     //apparently box doesn't have onScroll

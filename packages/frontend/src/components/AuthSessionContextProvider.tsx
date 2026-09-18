@@ -5,7 +5,7 @@ import {
 import { useEffect } from "react";
 import { useCookie } from "../hooks/useCookie";
 import jwt_decode from 'jwt-decode'
-const keycloakBaseUrl = process.env.REACT_APP_KEYCLOAK_URL;
+const keycloakBaseUrl = process.env.REACT_APP_KEYCLOAK_URL || '';
 
 const keycloakAuthConfig = {
     clientId: 'web',
@@ -16,7 +16,7 @@ const keycloakAuthConfig = {
         token: `${keycloakBaseUrl}/token`,
         authorize: `${keycloakBaseUrl}/auth`,
         userinfo: `${keycloakBaseUrl}/userinfo`,
-        account: `${keycloakBaseUrl.split('/protocol')[0]}/account` // unlike the other endpoints account doesn't require /protocol/openid-connect
+        account: keycloakBaseUrl ? `${keycloakBaseUrl.split('/protocol')[0]}/account` : '' // unlike the other endpoints account doesn't require /protocol/openid-connect
     },
 }
 
